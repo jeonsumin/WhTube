@@ -18,6 +18,8 @@
 		DE9FA05D2577C38400995291 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA05C2577C38400995291 /* SettingViewController.swift */; };
 		DE9FA0602577C5F300995291 /* SaveContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA05F2577C5F300995291 /* SaveContentViewController.swift */; };
 		DE9FA0712577CA5F00995291 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */; };
+		DE9FA0742577CF0E00995291 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0732577CF0E00995291 /* ChannelDetailViewController.swift */; };
+		DE9FA07A2577D00200995291 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0792577D00200995291 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +35,9 @@
 		DE9FA0592577C37600995291 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DE9FA05C2577C38400995291 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		DE9FA05F2577C5F300995291 /* SaveContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveContentViewController.swift; sourceTree = "<group>"; };
-		DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentDetailViewController.swift; path = Contents/ContentDetailViewController.swift; sourceTree = "<group>"; };
+		DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
+		DE9FA0732577CF0E00995291 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
+		DE9FA0792577D00200995291 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +70,10 @@
 		DE9FA03D2577B9AE00995291 /* WhTube */ = {
 			isa = PBXGroup;
 			children = (
-				DE9FA03E2577B9AE00995291 /* AppDelegate.swift */,
-				DE9FA0402577B9AE00995291 /* SceneDelegate.swift */,
 				DE9FA0442577B9AE00995291 /* Main.storyboard */,
-				DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */,
-				DE9FA0472577B9AE00995291 /* Assets.xcassets */,
 				DE9FA0492577B9AE00995291 /* LaunchScreen.storyboard */,
 				DE9FA04C2577B9AE00995291 /* Info.plist */,
+				DE9FA0762577CF2700995291 /* Resource */,
 				DE9FA06E2577C63600995291 /* Extension */,
 				DE9FA06D2577C62D00995291 /* Model */,
 				DE9FA0622577C5F900995291 /* Channel */,
@@ -87,6 +88,7 @@
 		DE9FA0622577C5F900995291 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				DE9FA0732577CF0E00995291 /* ChannelDetailViewController.swift */,
 				DE9FA0532577C34800995291 /* ChannelViewController.swift */,
 			);
 			path = Channel;
@@ -95,6 +97,7 @@
 		DE9FA0642577C5FF00995291 /* Contents */ = {
 			isa = PBXGroup;
 			children = (
+				DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */,
 				DE9FA0562577C35B00995291 /* ContentsViewController.swift */,
 			);
 			path = Contents;
@@ -134,8 +137,19 @@
 		DE9FA06E2577C63600995291 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DE9FA0792577D00200995291 /* UIColor.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		DE9FA0762577CF2700995291 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				DE9FA0472577B9AE00995291 /* Assets.xcassets */,
+				DE9FA03E2577B9AE00995291 /* AppDelegate.swift */,
+				DE9FA0402577B9AE00995291 /* SceneDelegate.swift */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +230,8 @@
 				DE9FA0412577B9AE00995291 /* SceneDelegate.swift in Sources */,
 				DE9FA05D2577C38400995291 /* SettingViewController.swift in Sources */,
 				DE9FA0572577C35B00995291 /* ContentsViewController.swift in Sources */,
+				DE9FA0742577CF0E00995291 /* ChannelDetailViewController.swift in Sources */,
+				DE9FA07A2577D00200995291 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

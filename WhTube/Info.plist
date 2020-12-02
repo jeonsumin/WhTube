@@ -49,6 +49,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>사용자의 현재 위치가 지도상에 표시됩니다. 주변 검색를 제공하는데 사용됩니다.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
