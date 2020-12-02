@@ -40,6 +40,21 @@
             </objects>
             <point key="canvasLocation" x="790" y="1643"/>
         </scene>
+        <!--Content Detail View Controller-->
+        <scene sceneID="Bw7-SC-nXZ">
+            <objects>
+                <viewController id="buT-PA-X4P" customClass="ContentDetailViewController" customModule="WhTube" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O7j-FS-L64">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hAf-fh-H7e"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pvT-2v-arW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="790" y="2320"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="VDO-N0-qc5">
             <objects>
@@ -109,11 +124,11 @@
             </objects>
             <point key="canvasLocation" x="1512" y="-23"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="OMG-tL-72l">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BGp-6F-3cf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="gyL-mI-lxj"/>
+                    <tabBarItem key="tabBarItem" title="" image="tv" catalog="system" id="gyL-mI-lxj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="krL-JD-kzL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -128,11 +143,11 @@
             </objects>
             <point key="canvasLocation" x="78" y="889"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="tyK-8i-akG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1jN-BZ-COR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="eAi-Kk-Zeu"/>
+                    <tabBarItem key="tabBarItem" title="" image="arrowtriangle.right.square" catalog="system" id="eAi-Kk-Zeu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NU6-ry-Dkt">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -147,17 +162,20 @@
             </objects>
             <point key="canvasLocation" x="789.85507246376812" y="888.61607142857144"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="ObA-VF-gBJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fQj-Ot-ydi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="LsU-7x-Dxj"/>
+                    <tabBarItem key="tabBarItem" title="" image="map" catalog="system" id="LsU-7x-Dxj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jv5-K3-KCC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OKw-bd-NQO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Z7Q-OA-il0" kind="relationship" relationship="rootViewController" id="0Wy-1V-W0q"/>
                     </connections>
@@ -166,11 +184,11 @@
             </objects>
             <point key="canvasLocation" x="1511.5942028985507" y="888.61607142857144"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="i8m-s0-3sf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AxI-OW-Vyj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hVQ-yX-HOv"/>
+                    <tabBarItem key="tabBarItem" title="" image="bookmark" catalog="system" id="hVQ-yX-HOv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hQm-LW-QPg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -185,11 +203,11 @@
             </objects>
             <point key="canvasLocation" x="2240.5797101449275" y="888.61607142857144"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="zdc-se-TNe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TtF-Hc-W7b" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="reG-Ii-6Sp"/>
+                    <tabBarItem key="tabBarItem" title="" image="gearshape" catalog="system" id="reG-Ii-6Sp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DMM-VW-LfH">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -206,6 +224,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowtriangle.right.square" catalog="system" width="128" height="114"/>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="map" catalog="system" width="128" height="110"/>
+        <image name="tv" catalog="system" width="128" height="97"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

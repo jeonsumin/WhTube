@@ -17,6 +17,7 @@
 		DE9FA05A2577C37600995291 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0592577C37600995291 /* MapViewController.swift */; };
 		DE9FA05D2577C38400995291 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA05C2577C38400995291 /* SettingViewController.swift */; };
 		DE9FA0602577C5F300995291 /* SaveContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA05F2577C5F300995291 /* SaveContentViewController.swift */; };
+		DE9FA0712577CA5F00995291 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DE9FA0592577C37600995291 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DE9FA05C2577C38400995291 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		DE9FA05F2577C5F300995291 /* SaveContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveContentViewController.swift; sourceTree = "<group>"; };
+		DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentDetailViewController.swift; path = Contents/ContentDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				DE9FA03E2577B9AE00995291 /* AppDelegate.swift */,
 				DE9FA0402577B9AE00995291 /* SceneDelegate.swift */,
 				DE9FA0442577B9AE00995291 /* Main.storyboard */,
+				DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */,
 				DE9FA0472577B9AE00995291 /* Assets.xcassets */,
 				DE9FA0492577B9AE00995291 /* LaunchScreen.storyboard */,
 				DE9FA04C2577B9AE00995291 /* Info.plist */,
@@ -208,6 +211,7 @@
 				DE9FA05A2577C37600995291 /* MapViewController.swift in Sources */,
 				DE9FA03F2577B9AE00995291 /* AppDelegate.swift in Sources */,
 				DE9FA0602577C5F300995291 /* SaveContentViewController.swift in Sources */,
+				DE9FA0712577CA5F00995291 /* ContentDetailViewController.swift in Sources */,
 				DE9FA0542577C34800995291 /* ChannelViewController.swift in Sources */,
 				DE9FA0412577B9AE00995291 /* SceneDelegate.swift in Sources */,
 				DE9FA05D2577C38400995291 /* SettingViewController.swift in Sources */,
