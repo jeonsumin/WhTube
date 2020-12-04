@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FCC1AB2489210D5DC7DCBD6 /* Pods_WhTube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7423A3DA792AC6AC77F15 /* Pods_WhTube.framework */; };
 		DE9FA03F2577B9AE00995291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA03E2577B9AE00995291 /* AppDelegate.swift */; };
 		DE9FA0412577B9AE00995291 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0402577B9AE00995291 /* SceneDelegate.swift */; };
 		DE9FA0462577B9AE00995291 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE9FA0442577B9AE00995291 /* Main.storyboard */; };
@@ -18,11 +19,18 @@
 		DE9FA05D2577C38400995291 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA05C2577C38400995291 /* SettingViewController.swift */; };
 		DE9FA0602577C5F300995291 /* SaveContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA05F2577C5F300995291 /* SaveContentViewController.swift */; };
 		DE9FA0712577CA5F00995291 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */; };
-		DE9FA0742577CF0E00995291 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0732577CF0E00995291 /* ChannelDetailViewController.swift */; };
 		DE9FA07A2577D00200995291 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0792577D00200995291 /* UIColor.swift */; };
+		DEFD75932578634E0028CD82 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD75922578634E0028CD82 /* Channel.swift */; };
+		DEFD7596257863580028CD82 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD7595257863580028CD82 /* Marker.swift */; };
+		DEFD759A2578636D0028CD82 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD75992578636D0028CD82 /* Contents.swift */; };
+		DEFD759E257867CB0028CD82 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD759D257867CB0028CD82 /* EndPoint.swift */; };
+		DEFD75A12578687E0028CD82 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD75A02578687E0028CD82 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6EE66D7C00CEB8340BA45B8F /* Pods-WhTube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhTube.release.xcconfig"; path = "Target Support Files/Pods-WhTube/Pods-WhTube.release.xcconfig"; sourceTree = "<group>"; };
+		82E7423A3DA792AC6AC77F15 /* Pods_WhTube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhTube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C86D06C813F7DD77A875CB07 /* Pods-WhTube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhTube.debug.xcconfig"; path = "Target Support Files/Pods-WhTube/Pods-WhTube.debug.xcconfig"; sourceTree = "<group>"; };
 		DE9FA03B2577B9AE00995291 /* WhTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9FA03E2577B9AE00995291 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9FA0402577B9AE00995291 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,8 +44,12 @@
 		DE9FA05C2577C38400995291 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		DE9FA05F2577C5F300995291 /* SaveContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveContentViewController.swift; sourceTree = "<group>"; };
 		DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
-		DE9FA0732577CF0E00995291 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
 		DE9FA0792577D00200995291 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		DEFD75922578634E0028CD82 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		DEFD7595257863580028CD82 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
+		DEFD75992578636D0028CD82 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
+		DEFD759D257867CB0028CD82 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		DEFD75A02578687E0028CD82 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FCC1AB2489210D5DC7DCBD6 /* Pods_WhTube.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3C78309F2496AAEFF3958EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				82E7423A3DA792AC6AC77F15 /* Pods_WhTube.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A445CA2B4DC4B3847F8E2F95 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C86D06C813F7DD77A875CB07 /* Pods-WhTube.debug.xcconfig */,
+				6EE66D7C00CEB8340BA45B8F /* Pods-WhTube.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DE9FA0322577B9AD00995291 = {
 			isa = PBXGroup;
 			children = (
 				DE9FA03D2577B9AE00995291 /* WhTube */,
 				DE9FA03C2577B9AE00995291 /* Products */,
+				A445CA2B4DC4B3847F8E2F95 /* Pods */,
+				A3C78309F2496AAEFF3958EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +107,7 @@
 				DE9FA04C2577B9AE00995291 /* Info.plist */,
 				DE9FA0762577CF2700995291 /* Resource */,
 				DE9FA06E2577C63600995291 /* Extension */,
+				DEFD759C257867A30028CD82 /* Network */,
 				DE9FA06D2577C62D00995291 /* Model */,
 				DE9FA0622577C5F900995291 /* Channel */,
 				DE9FA0642577C5FF00995291 /* Contents */,
@@ -88,7 +121,6 @@
 		DE9FA0622577C5F900995291 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
-				DE9FA0732577CF0E00995291 /* ChannelDetailViewController.swift */,
 				DE9FA0532577C34800995291 /* ChannelViewController.swift */,
 			);
 			path = Channel;
@@ -97,8 +129,8 @@
 		DE9FA0642577C5FF00995291 /* Contents */ = {
 			isa = PBXGroup;
 			children = (
-				DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */,
 				DE9FA0562577C35B00995291 /* ContentsViewController.swift */,
+				DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -130,6 +162,9 @@
 		DE9FA06D2577C62D00995291 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DEFD75922578634E0028CD82 /* Channel.swift */,
+				DEFD7595257863580028CD82 /* Marker.swift */,
+				DEFD75992578636D0028CD82 /* Contents.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,6 +187,15 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		DEFD759C257867A30028CD82 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DEFD759D257867CB0028CD82 /* EndPoint.swift */,
+				DEFD75A02578687E0028CD82 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE9FA04F2577B9AE00995291 /* Build configuration list for PBXNativeTarget "WhTube" */;
 			buildPhases = (
+				4E3EF574D48C4D2A378D3E3F /* [CP] Check Pods Manifest.lock */,
 				DE9FA0372577B9AD00995291 /* Sources */,
 				DE9FA0382577B9AD00995291 /* Frameworks */,
 				DE9FA0392577B9AD00995291 /* Resources */,
+				15717F3933F7D52427DFBD4F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -217,6 +263,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		15717F3933F7D52427DFBD4F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WhTube/Pods-WhTube-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WhTube/Pods-WhTube-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WhTube/Pods-WhTube-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E3EF574D48C4D2A378D3E3F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhTube-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE9FA0372577B9AD00995291 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -224,13 +312,17 @@
 			files = (
 				DE9FA05A2577C37600995291 /* MapViewController.swift in Sources */,
 				DE9FA03F2577B9AE00995291 /* AppDelegate.swift in Sources */,
+				DEFD75932578634E0028CD82 /* Channel.swift in Sources */,
 				DE9FA0602577C5F300995291 /* SaveContentViewController.swift in Sources */,
 				DE9FA0712577CA5F00995291 /* ContentDetailViewController.swift in Sources */,
 				DE9FA0542577C34800995291 /* ChannelViewController.swift in Sources */,
 				DE9FA0412577B9AE00995291 /* SceneDelegate.swift in Sources */,
 				DE9FA05D2577C38400995291 /* SettingViewController.swift in Sources */,
 				DE9FA0572577C35B00995291 /* ContentsViewController.swift in Sources */,
-				DE9FA0742577CF0E00995291 /* ChannelDetailViewController.swift in Sources */,
+				DEFD7596257863580028CD82 /* Marker.swift in Sources */,
+				DEFD759A2578636D0028CD82 /* Contents.swift in Sources */,
+				DEFD75A12578687E0028CD82 /* NetworkManager.swift in Sources */,
+				DEFD759E257867CB0028CD82 /* EndPoint.swift in Sources */,
 				DE9FA07A2577D00200995291 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,11 +467,12 @@
 		};
 		DE9FA0502577B9AE00995291 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C86D06C813F7DD77A875CB07 /* Pods-WhTube.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J74H985T9L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WhTube/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -394,11 +487,12 @@
 		};
 		DE9FA0512577B9AE00995291 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EE66D7C00CEB8340BA45B8F /* Pods-WhTube.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J74H985T9L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WhTube/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

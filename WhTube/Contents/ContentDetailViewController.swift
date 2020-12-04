@@ -6,24 +6,46 @@
 //
 
 import UIKit
+import YoutubePlayer_in_WKWebView
 
 class ContentDetailViewController: UIViewController {
 
+    @IBOutlet weak var playerView: WKYTPlayerView!
+    @IBOutlet weak var playInfoView: UIView!
+    
+    let playerVersion = ["playsinline":1]
+ 
+    //MARK: - LifeCycel
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        playerView.load(withVideoId: "EvzKLl7zwRw", playerVars :playerVersion)
+        playerView.delegate = self
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        playerView.layer.masksToBounds = true
+        playerView.layer.cornerRadius = 10
+        
+        playInfoView.layer.masksToBounds = false
+        playInfoView.layer.cornerRadius = 10
+        
+        playInfoView.layer.shadowOpacity = 0.5
+        playInfoView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        playInfoView.layer.shadowRadius = 10
     }
-    */
+}
 
+//MARK: - Private Method
+extension ContentsViewController {
+}
+
+//MARK: - Youtube Play
+extension ContentDetailViewController : WKYTPlayerViewDelegate {
+    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
+        playerView.playVideo()
+    }
 }

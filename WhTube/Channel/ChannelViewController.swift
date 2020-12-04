@@ -6,11 +6,21 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ChannelViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    
+    var channel : [channels] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +31,15 @@ class ChannelViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+        NetworkManager.channelRequest { (channels :[channels]) in
+            print("count ::: \(self.channel.count)")
+        }
     }
 }
 
@@ -33,12 +52,12 @@ extension ChannelViewController: UICollectionViewDataSource {
     
     //TODO: colectionView 데이터
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? CollectChannelListCell
+         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectChannelListCell
         
-        
-        cell!.backgroundColor = UIColor.randomColor()
-        
-        return cell!
+        cell.backgroundColor = UIColor.randomColor()
+//        let thumbnailURL = URL(string: channel[indexPath.row].profileImg)
+//        cell.thumbnailImg.kf.setImage(with: thumbnailURL)
+        return cell
     }
     
     
@@ -57,7 +76,7 @@ extension ChannelViewController: UICollectionViewDelegateFlowLayout {
 }
 
 class CollectChannelListCell: UICollectionViewCell {
-    
+    @IBOutlet weak var thumbnailImg: UIImageView!
 }
 //MARK: - TableView
 
@@ -83,7 +102,7 @@ extension ChannelViewController: UITableViewDataSource{
 extension ChannelViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = storyboard?.instantiateViewController(identifier: "ChannelDetailViewController") as! ChannelDetailViewController
+        let detailVC = storyboard?.instantiateViewController(identifier: "ContentDetailViewController") as! ContentDetailViewController
         
         navigationController?.pushViewController(detailVC, animated: true)
         
