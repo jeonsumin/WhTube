@@ -11,28 +11,10 @@ import Alamofire
 // Alamofire를 활용한 NetworkManager
 class NetworkManager {
     
+    static let shared : NetworkManager = NetworkManager()
     //MARK: - Channel
-    static func channelRequest(completion: @escaping ([channels]) -> Void){
+    func channelRequest(completion: @escaping ([channels]) -> Void){
         let channelRequesturl = URL(string: "https://moobe.co.kr/api/channels")!
-        /*
-        URLSession.shared.dataTask(with: channelRequesturl) { (data, response, error) in
-            
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            guard let responseData = data else { return }
-            
-            let decoder = JSONDecoder()
-            do{
-                let channel = try decoder.decode([channels].self, from: responseData)
-                completion(.success(channel))
-            }catch{
-                print("decode error ::: \(error.localizedDescription)")
-                completion(.failure(error))
-            }
-        }.resume()
-        */
         Alamofire.request(channelRequesturl, method: .get, parameters: [:], encoding: URLEncoding.default)
             .validate(statusCode: 200..<300)
             .responseJSON { (response) in
@@ -47,48 +29,46 @@ class NetworkManager {
                         
                     }
                 }
-                
             }
     }
     
     //MARK: - Marker
-    func markerRequest(){
+    func markerRequest(completion : @escaping ([markerResponse]) -> Void ){
         let markerRequestUrl = URL(string: "https://moobe.co.kr/api/cluster")!
-        URLSession.shared.dataTask(with: markerRequestUrl) { (data, response, error) in
-            guard error == nil,
-                  let responseData = data else { return }
-            
-            let decode = JSONDecoder()
-            do{
-                let markerData = try decode.decode([markerResponse].self, from: responseData)
-                print("markderData ::: \(markerData.count)")
-            }catch{
-                print("marker Error ::: \(error.localizedDescription)")
+        Alamofire.request(markerRequestUrl, method: .get, parameters: ["":""], encoding: URLEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseJSON { (response) in
+                if let responseData = response.result.value {
+                    do{
+                        let JSONData = try JSONSerialization.data(withJSONObject: responseData, options: .prettyPrinted)
+                        let decoder = JSONDecoder()
+                        let markderJson = try decoder.decode([markerResponse].self, from: JSONData)
+                        completion(markderJson)
+                    }catch{
+                        print("markder json Decoding fail ")
+                    }
+                }
             }
-            
-        }.resume()
     }
     
     //MARK: - Contents
-    func contentsRequest(){
+    func contentsRequest(completion: @escaping (contentResponse) -> Void){
         let contentsRequsetUrl = URL(string: "https://moobe.co.kr/api/contents?page=1")!
         
-        URLSession.shared.dataTask(with: contentsRequsetUrl) { data, reponse, error in
-            guard error == nil,
-                  let contentsData = data else {
-                return
+        Alamofire.request(contentsRequsetUrl, method: .get, parameters: [:], encoding: URLEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseJSON { (response) in
+                if let responseData = response.result.value {
+                    do{
+                        let jsonData = try JSONSerialization.data(withJSONObject: responseData, options: .prettyPrinted)
+                        let decoder = JSONDecoder()
+                        let contentsData = try decoder.decode(contentResponse.self, from: jsonData)
+                        completion(contentsData)
+                        
+                    }catch{
+                        print("contents error ")
+                    }
+                }
             }
-            
-            let StringData = String(data: contentsData, encoding: .utf8)
-            print("Stringdata :: \(StringData) ")
-            
-            let decoder = JSONDecoder()
-            do{
-                let json = try decoder.decode(contentResponse.self, from: contentsData)
-                print("contents JSON ::: \(json.contents.first)")
-            }catch{
-                print("error ::: \(error.localizedDescription)")
-            }
-        }.resume()
     }
 }

@@ -19,8 +19,23 @@ struct contents:Codable {
     let title: String
     let registerDateMoobe: String
     let tag: String
+    let store: Store
     let thumbnailUrl: String
     let contentsMetrics: contentsMetrics
+}
+// MARK: - Store
+struct Store: Codable {
+    let id, contentsID: Int
+    let name, tel, address1, address2: String
+    let availableTime: String
+    let latitude, longitude: Double
+    let link: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case contentsID = "contentsId"
+        case name, tel, address1, address2, availableTime, latitude, longitude, link
+    }
 }
 
 struct contentsMetrics : Codable {
@@ -31,3 +46,5 @@ struct contentsMetrics : Codable {
     let commentCount: Int
     let updateRegisterDate: String
 }
+
+

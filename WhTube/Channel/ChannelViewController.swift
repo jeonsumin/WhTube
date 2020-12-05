@@ -36,9 +36,9 @@ class ChannelViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
-        NetworkManager.channelRequest { (channels :[channels]) in
-            print("count ::: \(self.channel.count)")
+        
+        NetworkManager.shared.channelRequest { result in
+            self.channel = result
         }
     }
 }
@@ -47,16 +47,17 @@ class ChannelViewController: UIViewController {
 extension ChannelViewController: UICollectionViewDataSource {
     //TODO: collectionView 아이템 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return channel.count
     }
     
     //TODO: colectionView 데이터
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectChannelListCell
         
-        cell.backgroundColor = UIColor.randomColor()
-//        let thumbnailURL = URL(string: channel[indexPath.row].profileImg)
-//        cell.thumbnailImg.kf.setImage(with: thumbnailURL)
+//        cell.backgroundColor = UIColor.randomColor()
+        let model = channel[indexPath.row]
+        cell.configCell(model)
+        
         return cell
     }
     
@@ -77,6 +78,16 @@ extension ChannelViewController: UICollectionViewDelegateFlowLayout {
 
 class CollectChannelListCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImg: UIImageView!
+    
+    func configCell(_ info: channels){
+        let Img = info.profileImg
+        let url = URL(string: Img)
+        thumbnailImg.kf.setImage(with: url)
+    }
+    override func awakeFromNib() {
+        thumbnailImg.layer.masksToBounds = true
+        thumbnailImg.layer.cornerRadius = 25
+    }
 }
 //MARK: - TableView
 
@@ -106,6 +117,9 @@ extension ChannelViewController: UITableViewDelegate{
         
         navigationController?.pushViewController(detailVC, animated: true)
         
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 340
     }
     
 }

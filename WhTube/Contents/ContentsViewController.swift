@@ -14,6 +14,7 @@ class ContentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NetworkManager.shared.contentsRequest()
         // Do any additional setup after loading the view.
     }
 }
@@ -39,6 +40,10 @@ extension ContentsViewController : UITableViewDelegate {
         print("SelectRowAt ::: \(indexPath.row)")
         let contentsDetailVC = storyboard?.instantiateViewController(identifier: "ContentDetailViewController") as! ContentDetailViewController
         navigationController?.pushViewController(contentsDetailVC, animated: true) 
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 340
     }
 }
 
