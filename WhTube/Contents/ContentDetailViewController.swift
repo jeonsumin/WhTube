@@ -15,12 +15,13 @@ class ContentDetailViewController: UIViewController {
     
     let playerVersion = ["playsinline":1]
  
+    var videoId = ""
     //MARK: - LifeCycel
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        playerView.load(withVideoId: "EvzKLl7zwRw", playerVars :playerVersion)
+        playerView.load(withVideoId: videoId, playerVars :playerVersion)
         playerView.delegate = self
         
     }
