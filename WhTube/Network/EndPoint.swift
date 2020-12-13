@@ -12,3 +12,4 @@ enum EndPoint {
     static let marker   : String = "https://moobe.co.kr/api/cluster"
     static let Contents : String = "https://moobe.co.kr/api/contents?page=1"
 }
+//https://moobe.co.kr/api/contents?channel=6&page=1

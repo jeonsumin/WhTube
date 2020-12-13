@@ -81,6 +81,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DE85F67725862794003C36D9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE9FA0642577C5FF00995291 /* Contents */,
+				DE9FA0622577C5F900995291 /* Channel */,
+				DE9FA0672577C60F00995291 /* Map */,
+				DE9FA06B2577C61900995291 /* SaveContents */,
+				DE9FA0692577C61300995291 /* Setting */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		DE9FA0322577B9AD00995291 = {
 			isa = PBXGroup;
 			children = (
@@ -109,11 +121,7 @@
 				DE9FA06E2577C63600995291 /* Extension */,
 				DEFD759C257867A30028CD82 /* Network */,
 				DE9FA06D2577C62D00995291 /* Model */,
-				DE9FA0642577C5FF00995291 /* Contents */,
-				DE9FA0622577C5F900995291 /* Channel */,
-				DE9FA0672577C60F00995291 /* Map */,
-				DE9FA06B2577C61900995291 /* SaveContents */,
-				DE9FA0692577C61300995291 /* Setting */,
+				DE85F67725862794003C36D9 /* Controller */,
 			);
 			path = WhTube;
 			sourceTree = "<group>";

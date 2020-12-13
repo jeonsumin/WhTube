@@ -29,13 +29,15 @@ class ContentsViewController: UIViewController {
             
         }
     }
+    
+    //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
+        // Do any additional setup after loading the view.
         NetworkManager.shared.contentsRequest { response in
             print("count :: \(response.contents.count)")
             self.contentsReqeust = response.contents
@@ -44,15 +46,29 @@ class ContentsViewController: UIViewController {
         NetworkManager.shared.channelRequest { result in
             self.channel = result
         }
-        // Do any additional setup after loading the view.
+//        scrollViewDidScroll(table)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        print("viewDidAppear")
     }
 }
-
+extension ContentsViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset
+        let bounds = scrollView.bounds
+        let size = scrollView.contentSize
+        let inset = scrollView.contentInset
+        let y = offset.y + bounds.size.height - inset.bottom
+        let h = size.height
+        
+        let reload_distance = 50;
+        if(y >= h + CGFloat(reload_distance)) {
+            print("load more rows")
+        }
+    }
+}
+//MARK: - TableView
 extension ContentsViewController: UITableViewDataSource{
     
     //TODO: 셀 개수
@@ -84,11 +100,25 @@ extension ContentsViewController : UITableViewDelegate {
         navigationController?.pushViewController(contentsDetailVC, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let offset = tableView.contentOffset
+               let bounds = tableView.bounds
+               let size = tableView.contentSize
+               let inset = tableView.contentInset
+               let y: Float = Float(offset.y) + Float(bounds.size.height) + Float(inset.bottom)
+               let height: Float = Float(size.height)
+               let distance: Float = 10
+
+               if y > height + distance {
+                print("load more rows ")
+               }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 340
     }
 }
-
+//MARK: - TableView Cell
 class ContentsListCell: UITableViewCell {
     
     @IBOutlet weak var videoThumbnailImg: UIImageView!
@@ -111,6 +141,6 @@ class ContentsListCell: UITableViewCell {
     }
     override func awakeFromNib() {
         channelThumbImg.layer.cornerRadius = 20
-        channelThumbImg.contentMode = .scaleToFill
+        channelThumbImg.layer.masksToBounds = true
     }
 }

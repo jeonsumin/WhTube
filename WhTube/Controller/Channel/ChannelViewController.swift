@@ -21,6 +21,13 @@ class ChannelViewController: UIViewController {
             
         }
     }
+    var content : [contents] = [] {
+        didSet{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +73,8 @@ extension ChannelViewController: UICollectionViewDataSource {
 
 extension ChannelViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //TODO: 채널 클릭시 해당 채널의 비디오 리스트로 reload 하기
+        
         self.tableView.reloadData()
     }
 }
@@ -102,7 +111,8 @@ extension ChannelViewController: UITableViewDataSource{
             return UITableViewCell()
         }
         
-        cell.backgroundColor = UIColor.randomColor()
+//        cell.config(<#T##channel: channels##channels#>, <#T##content: contents##contents#>)
+//        cell.backgroundColor = UIColor.randomColor()
         
         return cell
     }
@@ -125,5 +135,22 @@ extension ChannelViewController: UITableViewDelegate{
 }
 
 class TableChannelListCell: UITableViewCell{
+    @IBOutlet weak var videoThumbnailImg: UIImageView!
+    @IBOutlet weak var channelThumbImg: UIImageView!
+    @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var viewCount: UILabel!
+    @IBOutlet weak var updateDate: UILabel!
     
+    func config(_ channel: channels,_ content: contents) {
+        let videoThumbnailUrl = URL(string: content.thumbnailUrl)!
+        let channelThumbnailUrl = URL(string: channel.profileImg)!
+        
+        videoThumbnailImg.kf.setImage(with: videoThumbnailUrl)
+        channelThumbImg.kf.setImage(with: channelThumbnailUrl)
+        lbTitle.text = content.title
+        viewCount.text = "조회수 \(content.contentsMetrics.viewCount)"
+        updateDate.text = content.contentsMetrics.updateRegisterDate
+        
+        
+    }
 }

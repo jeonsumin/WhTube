@@ -35,7 +35,7 @@ class NetworkManager {
     //MARK: - Marker
     func markerRequest(completion : @escaping ([markerResponse]) -> Void ){
         let markerRequestUrl = URL(string: "https://moobe.co.kr/api/cluster")!
-        Alamofire.request(markerRequestUrl, method: .get, parameters: ["":""], encoding: URLEncoding.default)
+        Alamofire.request(markerRequestUrl, method: .get, parameters: [:], encoding: URLEncoding.default)
             .validate(statusCode: 200..<300)
             .responseJSON { (response) in
                 if let responseData = response.result.value {
@@ -54,7 +54,6 @@ class NetworkManager {
     //MARK: - Contents
     func contentsRequest(completion: @escaping (contentResponse) -> Void){
         let contentsRequsetUrl = URL(string: "https://moobe.co.kr/api/contents?page=1")!
-        
         Alamofire.request(contentsRequsetUrl, method: .get, parameters: [:], encoding: URLEncoding.default)
             .validate()
             .responseJSON { (response) in
@@ -73,4 +72,5 @@ class NetworkManager {
                 }
             }
     }
+    
 }
