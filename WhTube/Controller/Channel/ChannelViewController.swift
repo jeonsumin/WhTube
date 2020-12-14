@@ -13,20 +13,26 @@ class ChannelViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
+    //MARK: - LifeCycle
     var channel : [channels] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
-            
         }
     }
-    var content : [contents] = [] {
-        didSet{
+    
+    var content: [contents] = [] {
+        didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     override func viewDidLoad() {
@@ -39,15 +45,29 @@ class ChannelViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        
+        let channelApi = NetworkManager.init(path: "api/channels", method: .get)
+        channelApi.request(success: { response in
+            
+            let decoder = JSONDecoder()
+            let jsondata = try! decoder.decode([channels].self, from: response!)
+            self.channel = jsondata
+        }, fail: { error in
+            print("error :: \(String(describing: error))")
+        })
+        
+         let contentApi = NetworkManager.init(path: "api/contents", method: .get)
+         contentApi.request { response in
+            let decoder = JSONDecoder()
+            let jsonData = try! decoder.decode(contentResponse.self, from: response!)
+            self.content = jsonData.contents
+            
+        } fail: { (error) in
+            print("error::: \(String(describing: error))")
+        }
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        NetworkManager.shared.channelRequest { result in
-            self.channel = result
-        }
-    }
 }
 
 //MARK: - CollectionView
@@ -62,9 +82,8 @@ extension ChannelViewController: UICollectionViewDataSource {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectChannelListCell
         
 //        cell.backgroundColor = UIColor.randomColor()
-        let model = channel[indexPath.row]
-        cell.configCell(model)
-        
+        let info = channel[indexPath.row]
+        cell.configCell(info)
         return cell
     }
     
@@ -74,8 +93,19 @@ extension ChannelViewController: UICollectionViewDataSource {
 extension ChannelViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //TODO: 채널 클릭시 해당 채널의 비디오 리스트로 reload 하기
+        let channelId = channel[indexPath.row].id
         
-        self.tableView.reloadData()
+        var param = [String:Any]()
+        param["channel"] = channelId
+        let contentApi = NetworkManager.init(path: "api/contents", method: .get,parameters: param)
+        contentApi.request { response in
+            let decoder = JSONDecoder()
+            let jsonData = try! decoder.decode(contentResponse.self, from: response!)
+            self.content = jsonData.contents
+            
+        } fail: { (error) in
+            print("error::: \(String(describing: error))")
+        }
     }
 }
 
@@ -93,6 +123,7 @@ class CollectChannelListCell: UICollectionViewCell {
         let url = URL(string: Img)
         thumbnailImg.kf.setImage(with: url)
     }
+    
     override func awakeFromNib() {
         thumbnailImg.layer.masksToBounds = true
         thumbnailImg.layer.cornerRadius = 25
@@ -103,17 +134,23 @@ class CollectChannelListCell: UICollectionViewCell {
 
 extension ChannelViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return content.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as? TableChannelListCell else {
             return UITableViewCell()
         }
-        
-//        cell.config(<#T##channel: channels##channels#>, <#T##content: contents##contents#>)
 //        cell.backgroundColor = UIColor.randomColor()
         
+        let contentModel = content[indexPath.row]
+        for item in channel {
+            if item.id == contentModel.channelId{
+                cell.config(item.profileImg, contentModel)
+            }
+        }
+        
+
         return cell
     }
     
@@ -141,16 +178,18 @@ class TableChannelListCell: UITableViewCell{
     @IBOutlet weak var viewCount: UILabel!
     @IBOutlet weak var updateDate: UILabel!
     
-    func config(_ channel: channels,_ content: contents) {
-        let videoThumbnailUrl = URL(string: content.thumbnailUrl)!
-        let channelThumbnailUrl = URL(string: channel.profileImg)!
+    func config(_ channel: String,_ channelContent: contents) {
+        let videoThumbnailUrl = URL(string: channelContent.thumbnailUrl)!
+        let channelThumbnailUrl = URL(string: channel)!
         
         videoThumbnailImg.kf.setImage(with: videoThumbnailUrl)
         channelThumbImg.kf.setImage(with: channelThumbnailUrl)
-        lbTitle.text = content.title
-        viewCount.text = "조회수 \(content.contentsMetrics.viewCount)"
-        updateDate.text = content.contentsMetrics.updateRegisterDate
-        
-        
+        lbTitle.text = channelContent.title
+        viewCount.text = "조회수 \(channelContent.contentsMetrics.viewCount)"
+        updateDate.text = channelContent.contentsMetrics.updateRegisterDate
+    }
+    override func awakeFromNib() {
+        channelThumbImg.layer.cornerRadius = 20
+        channelThumbImg.layer.masksToBounds = true
     }
 }

@@ -12,24 +12,15 @@ class ContentsViewController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
     
+    var channel : [channels] = []
     
-    var contentsReqeust : [contents] = [] {
+    var content: [contents] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.table.reloadData()
             }
         }
     }
-    
-    var channel : [channels] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.table.reloadData()
-            }
-            
-        }
-    }
-    
     //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,35 +28,30 @@ class ContentsViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        NetworkManager.shared.contentsRequest { response in
-            print("count :: \(response.contents.count)")
-            self.contentsReqeust = response.contents
-        }
         
-        NetworkManager.shared.channelRequest { result in
-            self.channel = result
+        let channelApi = NetworkManager.init(path: "api/channels", method: .get)
+        channelApi.request(success: { response in
+            
+            let decoder = JSONDecoder()
+            let jsondata = try! decoder.decode([channels].self, from: response!)
+            self.channel = jsondata
+        }, fail: { error in
+            print("error :: \(String(describing: error))")
+        })
+        
+         let contentApi = NetworkManager.init(path: "api/contents", method: .get)
+         contentApi.request { response in
+            let decoder = JSONDecoder()
+            let jsonData = try! decoder.decode(contentResponse.self, from: response!)
+            self.content = jsonData.contents
+            
+        } fail: { (error) in
+            print("error::: \(String(describing: error))")
         }
-//        scrollViewDidScroll(table)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    }
-}
-extension ContentsViewController {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset
-        let bounds = scrollView.bounds
-        let size = scrollView.contentSize
-        let inset = scrollView.contentInset
-        let y = offset.y + bounds.size.height - inset.bottom
-        let h = size.height
-        
-        let reload_distance = 50;
-        if(y >= h + CGFloat(reload_distance)) {
-            print("load more rows")
-        }
     }
 }
 //MARK: - TableView
@@ -73,21 +59,23 @@ extension ContentsViewController: UITableViewDataSource{
     
     //TODO: 셀 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contentsReqeust.count
-//        return 10
+        return content.count
     }
     
     //TODO: 셀 데이터
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ContentsListCell
-
-        let info = contentsReqeust[indexPath.row]
-        for item in channel{
-            if item.id == info.channelId{
-                cell.configure(info, item.profileImg)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ContentsListCell else {
+            return UITableViewCell()
+        }
+//        cell.backgroundColor = UIColor.randomColor()
+        
+        let contentModel = content[indexPath.row]
+        for item in channel {
+            if item.id == contentModel.channelId{
+                cell.configure(contentModel, item.profileImg)
             }
         }
-//        cell.configure(info)
+        
         return cell
     }
     
@@ -96,22 +84,7 @@ extension ContentsViewController: UITableViewDataSource{
 extension ContentsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contentsDetailVC = storyboard?.instantiateViewController(identifier: "ContentDetailViewController") as! ContentDetailViewController
-        contentsDetailVC.videoId = contentsReqeust[indexPath.row].videoLinkId
         navigationController?.pushViewController(contentsDetailVC, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let offset = tableView.contentOffset
-               let bounds = tableView.bounds
-               let size = tableView.contentSize
-               let inset = tableView.contentInset
-               let y: Float = Float(offset.y) + Float(bounds.size.height) + Float(inset.bottom)
-               let height: Float = Float(size.height)
-               let distance: Float = 10
-
-               if y > height + distance {
-                print("load more rows ")
-               }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
