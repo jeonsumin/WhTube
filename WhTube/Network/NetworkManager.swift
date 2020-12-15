@@ -11,7 +11,7 @@ import Alamofire
 // Alamofire를 활용한 NetworkManager
 class NetworkManager {
 
-    let host = Constants.BASE_URL
+    let host = Constants.API_URL
     let url: String
     let method : HTTPMethod
     let parameters: Parameters

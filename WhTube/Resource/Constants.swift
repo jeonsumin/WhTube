@@ -8,5 +8,5 @@
 import Foundation
 
 struct Constants {
-    static let BASE_URL = "https://moobe.co.kr/"
+    static let API_URL = "https://moobe.co.kr/"
 }

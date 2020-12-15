@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9FCC1AB2489210D5DC7DCBD6 /* Pods_WhTube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7423A3DA792AC6AC77F15 /* Pods_WhTube.framework */; };
+		DE65B63625884FCB00AF3795 /* ContentsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65B63525884FCB00AF3795 /* ContentsListCell.swift */; };
+		DE65B6392588505600AF3795 /* ContentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65B6382588505600AF3795 /* ContentsViewModel.swift */; };
 		DE9FA03F2577B9AE00995291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA03E2577B9AE00995291 /* AppDelegate.swift */; };
 		DE9FA0412577B9AE00995291 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0402577B9AE00995291 /* SceneDelegate.swift */; };
 		DE9FA0462577B9AE00995291 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE9FA0442577B9AE00995291 /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 		6EE66D7C00CEB8340BA45B8F /* Pods-WhTube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhTube.release.xcconfig"; path = "Target Support Files/Pods-WhTube/Pods-WhTube.release.xcconfig"; sourceTree = "<group>"; };
 		82E7423A3DA792AC6AC77F15 /* Pods_WhTube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhTube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86D06C813F7DD77A875CB07 /* Pods-WhTube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhTube.debug.xcconfig"; path = "Target Support Files/Pods-WhTube/Pods-WhTube.debug.xcconfig"; sourceTree = "<group>"; };
+		DE65B63525884FCB00AF3795 /* ContentsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsListCell.swift; sourceTree = "<group>"; };
+		DE65B6382588505600AF3795 /* ContentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsViewModel.swift; sourceTree = "<group>"; };
 		DE9FA03B2577B9AE00995291 /* WhTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9FA03E2577B9AE00995291 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9FA0402577B9AE00995291 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,7 +87,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		DE85F67725862794003C36D9 /* Controller */ = {
+		DE65B63325884F6300AF3795 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DE65B63C2588506B00AF3795 /* Contents */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DE65B63C2588506B00AF3795 /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				DE65B6382588505600AF3795 /* ContentsViewModel.swift */,
+			);
+			path = Contents;
+			sourceTree = "<group>";
+		};
+		DE85F67725862794003C36D9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				DE9FA0642577C5FF00995291 /* Contents */,
@@ -92,7 +112,7 @@
 				DE9FA06B2577C61900995291 /* SaveContents */,
 				DE9FA0692577C61300995291 /* Setting */,
 			);
-			path = Controller;
+			path = View;
 			sourceTree = "<group>";
 		};
 		DE9FA0322577B9AD00995291 = {
@@ -123,7 +143,8 @@
 				DE9FA06E2577C63600995291 /* Extension */,
 				DEFD759C257867A30028CD82 /* Network */,
 				DE9FA06D2577C62D00995291 /* Model */,
-				DE85F67725862794003C36D9 /* Controller */,
+				DE85F67725862794003C36D9 /* View */,
+				DE65B63325884F6300AF3795 /* ViewModel */,
 			);
 			path = WhTube;
 			sourceTree = "<group>";
@@ -140,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				DE9FA0562577C35B00995291 /* ContentsViewController.swift */,
+				DE65B63525884FCB00AF3795 /* ContentsListCell.swift */,
 				DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */,
 			);
 			path = Contents;
@@ -332,9 +354,11 @@
 				DE9FA05D2577C38400995291 /* SettingViewController.swift in Sources */,
 				DE9FA0572577C35B00995291 /* ContentsViewController.swift in Sources */,
 				DEFD7596257863580028CD82 /* Marker.swift in Sources */,
+				DE65B63625884FCB00AF3795 /* ContentsListCell.swift in Sources */,
 				DEFD759A2578636D0028CD82 /* Contents.swift in Sources */,
 				DEFD75A12578687E0028CD82 /* NetworkManager.swift in Sources */,
 				DEFD759E257867CB0028CD82 /* EndPoint.swift in Sources */,
+				DE65B6392588505600AF3795 /* ContentsViewModel.swift in Sources */,
 				DE9FA07A2577D00200995291 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
