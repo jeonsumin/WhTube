@@ -161,7 +161,8 @@ extension ChannelViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = storyboard?.instantiateViewController(identifier: "ContentDetailViewController") as! ContentDetailViewController
-        
+        let content = self.content[indexPath.row]
+        detailVC.contentBy = content
         navigationController?.pushViewController(detailVC, animated: true)
         
     }
