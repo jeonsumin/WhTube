@@ -57,15 +57,14 @@ class ChannelViewController: UIViewController {
         })
         
          let contentApi = NetworkManager.init(path: "api/contents", method: .get)
-         contentApi.request { response in
-            let decoder = JSONDecoder()
-            let jsonData = try! decoder.decode(contentResponse.self, from: response!)
-            self.content = jsonData.contents
-            
-        } fail: { (error) in
+        contentApi.request(success: { response in
+               let decoder = JSONDecoder()
+                     let jsonData = try! decoder.decode(contentResponse.self, from: response!)
+                     self.content = jsonData.contents
+                     
+        }) { (error) in
             print("error::: \(String(describing: error))")
         }
-        
     }
     
 }
@@ -98,12 +97,11 @@ extension ChannelViewController: UICollectionViewDelegate {
         var param = [String:Any]()
         param["channel"] = channelId
         let contentApi = NetworkManager.init(path: "api/contents", method: .get,parameters: param)
-        contentApi.request { response in
+        contentApi.request(success: { response in
             let decoder = JSONDecoder()
             let jsonData = try! decoder.decode(contentResponse.self, from: response!)
             self.content = jsonData.contents
-            
-        } fail: { (error) in
+        }) { error in
             print("error::: \(String(describing: error))")
         }
     }

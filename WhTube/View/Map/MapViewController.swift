@@ -24,20 +24,7 @@ class MapViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//
-//        let location = CLLocationCoordinate2D(latitude: 37.5412092163375, longitude: 126.973835448986)
-//
-//        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-//        let region = MKCoordinateRegion(center: location, span: span)
-//        map.setRegion(region, animated: true)
-//
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = location
-//        annotation.title = "이치젠덴푸라메시"
-//        annotation.subtitle = "#이치젠 #이치젠덴푸라메시 #튀김정식"
-//        map.addAnnotation(annotation)
-//
+        
         let stadiums = [Stadium(name: "남한강민물매운탕", lattitude: 37.545626109663, longtitude:127.066210285087),
         Stadium(name: "이치젠덴푸라메시", lattitude: 37.5412092163375, longtitude:126.973835448986 ),
         Stadium(name: "꿉당성수점", lattitude: 37.5432276384361, longtitude: 127.057641548378),

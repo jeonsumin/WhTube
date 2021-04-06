@@ -7,11 +7,12 @@
 
 import UIKit
 import YoutubePlayer_in_WKWebView
+import MapKit
 
 class ContentDetailViewController: UIViewController {
 
     @IBOutlet weak var playerView: WKYTPlayerView!
-    @IBOutlet weak var playInfoView: UIView!
+    @IBOutlet weak var map: MKMapView!
     
     let playerVersion = ["playsinline":1]
  
@@ -23,6 +24,7 @@ class ContentDetailViewController: UIViewController {
         
         playerView.load(withVideoId: videoId, playerVars :playerVersion)
         playerView.delegate = self
+        navigationController?.navigationBar.barStyle = .default
         
     }
     
@@ -31,12 +33,6 @@ class ContentDetailViewController: UIViewController {
         playerView.layer.masksToBounds = true
         playerView.layer.cornerRadius = 10
         
-        playInfoView.layer.masksToBounds = false
-        playInfoView.layer.cornerRadius = 10
-        
-        playInfoView.layer.shadowOpacity = 0.5
-        playInfoView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        playInfoView.layer.shadowRadius = 10
     }
 }
 
