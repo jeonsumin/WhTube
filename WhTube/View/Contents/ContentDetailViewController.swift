@@ -27,7 +27,7 @@ class ContentDetailViewController: UIViewController {
     
     var contentBy : contents!
     
-    let distanceSapn:CLLocationDistance = 70000
+    let distanceSapn:CLLocationDistance = 50000
     //MARK: - LifeCycel
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,12 +64,12 @@ class ContentDetailViewController: UIViewController {
     
     func fetchData(){
         lbTitle.text = contentBy.title
-        viewCount.text = "\(contentBy.contentsMetrics.viewCount)"
+        viewCount.text = "조회수 \(contentBy.contentsMetrics.viewCount)"
         createDate.text = contentBy.contentsMetrics.updateRegisterDate
         storeName.text = contentBy.store.name
-        storeTime.text = contentBy.store.availableTime
+        contentBy.store.availableTime.isEmpty ? (storeTime.text = "저희도몰라요ㅠ") : (storeTime.text = contentBy.store.availableTime)
         storePlace.text = contentBy.store.address1
-        storeTelNum.text = "\(contentBy.store.tel)"
+        contentBy.store.tel.isEmpty ? (storeTelNum.text = "Nan") : (storeTelNum.text = "\(contentBy.store.tel)")
         //TODO: channel api 호출하여서 채널이미지 보여주기
         //        channelImage.image = contentBy.channelId
         
