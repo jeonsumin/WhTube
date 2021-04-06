@@ -31,16 +31,16 @@ class ContentsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    }
-}
-
-//MARK: - Method
-extension ContentsViewController{
     
+    }
+    
+    
+    //MARK: - Private Method
 }
 
-//MARK: - TableView
-extension ContentsViewController: UITableViewDataSource{
+
+//MARK: - TableViewDelegate And DataSource
+extension ContentsViewController: UITableViewDataSource, UITableViewDelegate{
     
     //TODO: 셀 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,10 +52,6 @@ extension ContentsViewController: UITableViewDataSource{
         let cell = viewModel.cell(for: indexPath, at: tableView)
         return cell
     }
-    
-}
-
-extension ContentsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contentsDetailVC = storyboard?.instantiateViewController(identifier: "ContentDetailViewController") as! ContentDetailViewController
         let selectByContent = viewModel.selectByContent(at: indexPath)
@@ -64,6 +60,6 @@ extension ContentsViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 340
+        return 312
     }
 }
