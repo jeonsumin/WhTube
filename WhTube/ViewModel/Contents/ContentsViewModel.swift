@@ -51,7 +51,10 @@ extension ContentsViewModel {
     var numberOfRowsInSection: Int {
         return content.count
     }
-    
+    func selectByContent(at indexPath: IndexPath) -> contents {
+        let contents = content[indexPath.row]
+        return contents
+    }
     func cell(for indexPath: IndexPath,at tableView: UITableView) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as? ContentsListCell else {
             return UITableViewCell()

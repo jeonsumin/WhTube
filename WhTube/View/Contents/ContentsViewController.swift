@@ -36,6 +36,7 @@ class ContentsViewController: UIViewController {
 
 //MARK: - Method
 extension ContentsViewController{
+    
 }
 
 //MARK: - TableView
@@ -57,6 +58,8 @@ extension ContentsViewController: UITableViewDataSource{
 extension ContentsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contentsDetailVC = storyboard?.instantiateViewController(identifier: "ContentDetailViewController") as! ContentDetailViewController
+        let selectByContent = viewModel.selectByContent(at: indexPath)
+        contentsDetailVC.contentBy = selectByContent
         navigationController?.pushViewController(contentsDetailVC, animated: true)
     }
     

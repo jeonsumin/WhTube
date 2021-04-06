@@ -17,12 +17,14 @@ class ContentDetailViewController: UIViewController {
     let playerVersion = ["playsinline":1]
  
     var videoId = ""
+    var contentBy : contents!
     //MARK: - LifeCycel
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         
-        playerView.load(withVideoId: videoId, playerVars :playerVersion)
+        playerView.load(withVideoId: contentBy.videoLinkId, playerVars :playerVersion)
         playerView.delegate = self
         navigationController?.navigationBar.barStyle = .default
         

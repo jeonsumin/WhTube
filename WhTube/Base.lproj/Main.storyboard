@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TXE-n6-xw7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TXE-n6-xw7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+<<<<<<< HEAD
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+=======
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+>>>>>>> 6936028f2111b5700d2fcb8f8c6550df5ee3417e
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -251,11 +255,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="euz-2O-e4k" customClass="WKYTPlayerView">
                                 <rect key="frame" x="20" y="44" width="374" height="210.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+=======
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euz-2O-e4k" customClass="WKYTPlayerView">
+                                <rect key="frame" x="20" y="54" width="374" height="210.5"/>
+>>>>>>> 6936028f2111b5700d2fcb8f8c6550df5ee3417e
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+<<<<<<< HEAD
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jae-T8-0Wf">
                                 <rect key="frame" x="20" y="305" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -516,6 +526,10 @@
                                         </constraints>
                                     </mapView>
                                 </subviews>
+=======
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjh-Ea-mtb">
+                                <rect key="frame" x="12" y="293" width="390" height="400"/>
+>>>>>>> 6936028f2111b5700d2fcb8f8c6550df5ee3417e
                                 <constraints>
                                     <constraint firstItem="fBn-H2-ShM" firstAttribute="top" secondItem="Yt8-OC-Bkn" secondAttribute="bottom" constant="1" id="4Ax-ZA-yKj"/>
                                     <constraint firstAttribute="trailing" secondItem="NPr-cj-Lz8" secondAttribute="trailing" constant="-1" id="7bO-tQ-Yfj"/>
@@ -537,6 +551,7 @@
                         <viewLayoutGuide key="safeArea" id="xlh-2l-Doc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+<<<<<<< HEAD
                             <constraint firstItem="dGy-A5-brE" firstAttribute="top" secondItem="9DN-Hh-Voe" secondAttribute="top" constant="558" id="4pP-tU-xHi"/>
                             <constraint firstItem="dGy-A5-brE" firstAttribute="trailing" secondItem="gFv-GJ-Q62" secondAttribute="trailing" id="7OS-un-gnV"/>
                             <constraint firstItem="dGy-A5-brE" firstAttribute="top" secondItem="gyY-bX-ba3" secondAttribute="bottom" constant="8" id="DUI-6e-ZS5"/>
@@ -555,6 +570,13 @@
                             <constraint firstItem="dGy-A5-brE" firstAttribute="leading" secondItem="gFv-GJ-Q62" secondAttribute="leading" id="pCf-5g-KdQ"/>
                             <constraint firstItem="dGy-A5-brE" firstAttribute="top" secondItem="gyY-bX-ba3" secondAttribute="bottom" constant="8" symbolic="YES" id="uSa-lY-hMf"/>
                             <constraint firstItem="gyY-bX-ba3" firstAttribute="top" secondItem="gFv-GJ-Q62" secondAttribute="bottom" constant="8" id="xbs-4e-jgH"/>
+=======
+                            <constraint firstItem="hAf-fh-H7e" firstAttribute="trailing" secondItem="euz-2O-e4k" secondAttribute="trailing" constant="20" id="B4T-MR-rbE"/>
+                            <constraint firstItem="euz-2O-e4k" firstAttribute="leading" secondItem="hAf-fh-H7e" secondAttribute="leading" constant="20" id="VsQ-zp-VPy"/>
+                            <constraint firstItem="euz-2O-e4k" firstAttribute="top" secondItem="hAf-fh-H7e" secondAttribute="top" constant="10" id="W43-Ng-EFb"/>
+                            <constraint firstItem="bjh-Ea-mtb" firstAttribute="top" secondItem="euz-2O-e4k" secondAttribute="bottom" constant="28.5" id="gEI-O6-OVb"/>
+                            <constraint firstItem="bjh-Ea-mtb" firstAttribute="centerX" secondItem="euz-2O-e4k" secondAttribute="centerX" id="t7n-46-cmk"/>
+>>>>>>> 6936028f2111b5700d2fcb8f8c6550df5ee3417e
                         </constraints>
                     </view>
                     <connections>
