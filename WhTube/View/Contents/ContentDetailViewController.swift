@@ -10,14 +10,24 @@ import YoutubePlayer_in_WKWebView
 import MapKit
 
 class ContentDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var playerView: WKYTPlayerView!
     @IBOutlet weak var map: MKMapView!
     
+    @IBOutlet weak var channelImage : UIImageView!
+    @IBOutlet weak var lbTitle      : UILabel!
+    @IBOutlet weak var viewCount    : UILabel!
+    @IBOutlet weak var createDate   : UILabel!
+    @IBOutlet weak var storeName    : UILabel!
+    @IBOutlet weak var storeTelNum  : UILabel!
+    @IBOutlet weak var storePlace   : UILabel!
+    @IBOutlet weak var storeTime    : UILabel!
+    
     let playerVersion = ["playsinline":1]
- 
-    var videoId = ""
+    
     var contentBy : contents!
+    
+    let distanceSapn:CLLocationDistance = 70000
     //MARK: - LifeCycel
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,43 +35,81 @@ class ContentDetailViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         playerView.load(withVideoId: contentBy.videoLinkId, playerVars :playerVersion)
         playerView.delegate = self
+        fetchData()
+        setupLabelTap()
+        fetchMap(contentBy)
+        
         navigationController?.navigationBar.barStyle = .default
     }
-    /*
-     id: 1658,
-     videoLinkId: "jBS2PVIhVgM",
-     channelId: 1,
-     storeId: 1648,
-     title: "30명 줄서서 먹는... 한우말이고기..매진될 때까지 먹었습니다!!!",
-     registerDateMoobe: "2021-03-11 23:51:21",
-     tag: "#한우말이고기 #말이고기 #한우",
-     store:
-        id: 1648,
-        contentsID: 1658,
-        name: "산정집",
-        tel: "033-742-8556",
-        address1: "강원 원주시 천사로 203-15",
-        address2: "일산동 217-8",
-        availableTime: "매일 12:00 - 14:00점심 매일 14:00 - 17:00Break time 매일 17:30 - 20:30저녁시간 일요일 휴무공휴일 휴무",
-        latitude: 37.3515452074584,
-        longitude: 127.946080003682,
-        link: "https://store.naver.com/restaurants/detail?id=11708672"
-     thumbnailUrl: "https://img.youtube.com/vi/jBS2PVIhVgM/0.jpg",
-     contentsMetrics:
-        videoId: "jBS2PVIhVgM",
-        viewCount: 160176,
-        likeCount: 4734,
-        dislikeCount: 70,
-        commentCount: 278,
-        updateRegisterDate: "2021-03-25"
-     */
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         playerView.layer.masksToBounds = true
         playerView.layer.cornerRadius = 10
+    }
+    
+    //MARK: - Private Method
+    func zoomLevel(location: CLLocation){
         
     }
-    //MARK: - Private Method
+    func fetchMap(_ place:contents){
+        let annotations = MKPointAnnotation()
+        annotations.title = place.store.name
+        annotations.coordinate = CLLocationCoordinate2D(latitude: place.store.latitude, longitude: place.store.longitude)
+        let mapCoordinates = MKCoordinateRegion(center: annotations.coordinate, latitudinalMeters: distanceSapn, longitudinalMeters: distanceSapn)
+        map.setRegion(mapCoordinates, animated: true)
+        map.addAnnotation(annotations)
+        map.scalesLargeContentImage = true
+    }
+    
+    func fetchData(){
+        lbTitle.text = contentBy.title
+        viewCount.text = "\(contentBy.contentsMetrics.viewCount)"
+        createDate.text = contentBy.contentsMetrics.updateRegisterDate
+        storeName.text = contentBy.store.name
+        storeTime.text = contentBy.store.availableTime
+        storePlace.text = contentBy.store.address1
+        storeTelNum.text = "\(contentBy.store.tel)"
+        //TODO: channel api 호출하여서 채널이미지 보여주기
+        //        channelImage.image = contentBy.channelId
+        
+        channelImage.layer.cornerRadius = channelImage.frame.height / 2
+    }
+    
+    func setupLabelTap(){
+        let labelTap = UITapGestureRecognizer(target: self, action: #selector(didTappedLabel(_:)))
+        self.storeTelNum.isUserInteractionEnabled = true
+        self.storeTelNum.addGestureRecognizer(labelTap)
+    }
+    
+    @objc func didTappedLabel(_ sender: UITapGestureRecognizer){
+        let phonNum = contentBy.store.tel.replacingOccurrences(of: "-", with: "")
+        if let NumberUrl = URL(string: "tel://\(phonNum)") {
+            let application: UIApplication = UIApplication.shared
+            if(application.canOpenURL(NumberUrl as URL)){
+                application.open(NumberUrl as URL,options: [:], completionHandler: nil)
+            }
+        }
+    }
+    //TODO:공통함수로 앱 호출 하기
+    func callMapApplication(mapApp mapName:String,openScheme scheme:String){
+        
+    }
+    //MARK:- IBAction Methods
+    @IBAction func didTappedMapButton(_ sender: UIButton) {
+        let actionSheet = UIAlertController(title: nil, message: "다른 앱으로 보기", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "카카오맵", style: .default, handler: {  _ in
+            print("카카오맵 호출")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "T맵", style: .default, handler: { _ in
+            print("T맵 호출")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "네이버지도", style: .default, handler: { _ in
+            print("네이버지도 호출")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        present(actionSheet, animated: true)
+    }
 }
 
 //MARK: - Youtube Play
