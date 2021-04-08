@@ -8,6 +8,7 @@
 import UIKit
 import YoutubePlayer_in_WKWebView
 import MapKit
+import Kingfisher
 
 class ContentDetailViewController: UIViewController {
     
@@ -26,8 +27,11 @@ class ContentDetailViewController: UIViewController {
     let playerVersion = ["playsinline":1]
     
     var contentBy : contents!
+    var channlImageURL = ""
+    var channel = [channels]()
     
     let distanceSapn:CLLocationDistance = 50000
+    
     //MARK: - LifeCycel
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +42,7 @@ class ContentDetailViewController: UIViewController {
         fetchData()
         setupLabelTap()
         fetchMap(contentBy)
-        
+        print("channel : \(self.channlImageURL)")
         navigationController?.navigationBar.barStyle = .default
     }
     
@@ -49,9 +53,6 @@ class ContentDetailViewController: UIViewController {
     }
     
     //MARK: - Private Method
-    func zoomLevel(location: CLLocation){
-        
-    }
     func fetchMap(_ place:contents){
         let annotations = MKPointAnnotation()
         annotations.title = place.store.name
@@ -70,10 +71,10 @@ class ContentDetailViewController: UIViewController {
         contentBy.store.availableTime.isEmpty ? (storeTime.text = "저희도몰라요ㅠ") : (storeTime.text = contentBy.store.availableTime)
         storePlace.text = contentBy.store.address1
         contentBy.store.tel.isEmpty ? (storeTelNum.text = "Nan") : (storeTelNum.text = "\(contentBy.store.tel)")
-        //TODO: channel api 호출하여서 채널이미지 보여주기
-        //        channelImage.image = contentBy.channelId
-        
         channelImage.layer.cornerRadius = channelImage.frame.height / 2
+        let url = URL(string: channlImageURL)
+        channelImage.kf.setImage(with: url)
+
     }
     
     func setupLabelTap(){

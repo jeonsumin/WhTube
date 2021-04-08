@@ -23,6 +23,7 @@
 		DE9FA0712577CA5F00995291 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */; };
 		DE9FA07A2577D00200995291 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA0792577D00200995291 /* UIColor.swift */; };
 		DEAB9A592586F9FF00BA834F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB9A582586F9FF00BA834F /* Constants.swift */; };
+		DEC96BBE261F5C5100DB7BB2 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC96BBD261F5C5100DB7BB2 /* MapViewModel.swift */; };
 		DEFD75932578634E0028CD82 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD75922578634E0028CD82 /* Channel.swift */; };
 		DEFD7596257863580028CD82 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD7595257863580028CD82 /* Marker.swift */; };
 		DEFD759A2578636D0028CD82 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFD75992578636D0028CD82 /* Contents.swift */; };
@@ -51,6 +52,7 @@
 		DE9FA0702577CA5F00995291 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
 		DE9FA0792577D00200995291 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		DEAB9A582586F9FF00BA834F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DEC96BBD261F5C5100DB7BB2 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		DEFD75922578634E0028CD82 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		DEFD7595257863580028CD82 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		DEFD75992578636D0028CD82 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		DE65B63325884F6300AF3795 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DEC96BBC261F5C4100DB7BB2 /* Map */,
 				DE65B63C2588506B00AF3795 /* Contents */,
 			);
 			path = ViewModel;
@@ -218,6 +221,14 @@
 				DEAB9A582586F9FF00BA834F /* Constants.swift */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		DEC96BBC261F5C4100DB7BB2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DEC96BBD261F5C5100DB7BB2 /* MapViewModel.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		DEFD759C257867A30028CD82 /* Network */ = {
@@ -360,6 +371,7 @@
 				DEFD759E257867CB0028CD82 /* EndPoint.swift in Sources */,
 				DE65B6392588505600AF3795 /* ContentsViewModel.swift in Sources */,
 				DE9FA07A2577D00200995291 /* UIColor.swift in Sources */,
+				DEC96BBE261F5C5100DB7BB2 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

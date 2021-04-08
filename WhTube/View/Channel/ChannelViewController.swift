@@ -147,8 +147,6 @@ extension ChannelViewController: UITableViewDataSource{
                 cell.config(item.profileImg, contentModel)
             }
         }
-        
-
         return cell
     }
     
@@ -161,6 +159,13 @@ extension ChannelViewController: UITableViewDelegate{
         let detailVC = storyboard?.instantiateViewController(identifier: "ContentDetailViewController") as! ContentDetailViewController
         let content = self.content[indexPath.row]
         detailVC.contentBy = content
+        let contentModel = self.content[indexPath.row]
+        for item in channel {
+            if item.id == contentModel.channelId{
+                detailVC.channlImageURL = item.profileImg
+            }
+        }
+        
         navigationController?.pushViewController(detailVC, animated: true)
         
     }

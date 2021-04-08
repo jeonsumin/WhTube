@@ -55,7 +55,10 @@ extension ContentsViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contentsDetailVC = storyboard?.instantiateViewController(identifier: "ContentDetailViewController") as! ContentDetailViewController
         let selectByContent = viewModel.selectByContent(at: indexPath)
+        let channelImage = viewModel.selectedContentChannel(channelId: selectByContent.channelId)
         contentsDetailVC.contentBy = selectByContent
+        
+        contentsDetailVC.channlImageURL = channelImage
         navigationController?.pushViewController(contentsDetailVC, animated: true)
     }
     

@@ -13,7 +13,7 @@ class ContentsViewModel {
 
     var changeHandler : Handler
     
-    var channel : [channels] = []
+    var channel = [channels]()
     var content: [contents] = [] {
         didSet {
             changeHandler(content)
@@ -32,7 +32,14 @@ extension ContentsViewModel {
             
             let decoder = JSONDecoder()
             let jsondata = try! decoder.decode([channels].self, from: response!)
-            self.channel = jsondata
+//            var arr = [channels]()
+            for i in jsondata{
+                let arrItem = channels(id: i.id, youtubeID:i.youtubeID , youtubeName: i.youtubeID, category: i.category, profileImg: i.profileImg)
+                self.channel.append(arrItem)
+            }
+
+//            self.channel = jsondata
+            
         }, fail: { error in
             print("error :: \(String(describing: error))")
         })
@@ -54,6 +61,15 @@ extension ContentsViewModel {
     func selectByContent(at indexPath: IndexPath) -> contents {
         let contents = content[indexPath.row]
         return contents
+    }
+    func selectedContentChannel(channelId : Int) -> String{
+        var channelImage = ""
+        for item in channel {
+            if item.id == channelId {
+                channelImage = item.profileImg
+            }
+        }
+        return channelImage
     }
     func cell(for indexPath: IndexPath,at tableView: UITableView) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as? ContentsListCell else {

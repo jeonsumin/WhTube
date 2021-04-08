@@ -7,15 +7,11 @@
 
 import Foundation
 
-struct markerResponse : Codable {
-    let markerList : [markerLists]
-    let markerListSize : Int
-}
-
 struct markerLists : Codable {
-    let id : Int
-    let tag : String
-    let name : String
-    let latitude: Double
-    let longitude : Double
+    var id : Int
+    var tag : String
+    var name : String
+    var latitude: String
+    var longitude : String
+    var markerListSize : Int
 }

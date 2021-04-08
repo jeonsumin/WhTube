@@ -8,7 +8,7 @@ use_frameworks!
 pod 'YoutubePlayer-in-WKWebView'
 pod 'Alamofire' ,'~> 4.4'
 pod 'Kingfisher'
-
+pod 'SwiftyJSON', '~> 4.0'
 
 
 end
