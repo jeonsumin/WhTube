@@ -19,35 +19,38 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var map: MKMapView!
     var mapList = [markerLists]()
+    var viewModel : MapViewModel!
     
+    let distanceSapn:CLLocationDistance = 50000
+    
+    var name : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        MapViewModel.shared.mapListResponse { response in
-            switch response{
-            case .success(let result):
-                print("result :: \(result)")
-                DispatchQueue.main.async {
-                    self.mapList.append(contentsOf: result)
-                }
-            case .failure(let error):
-            print("error \(error.localizedDescription)")
+        
+        viewModel = MapViewModel(changehandler: { [self] mapPing in
+            let Array = mapPing.first!.Lists
+            var stadium : [Stadium] = []
+            for item in Array {
+//                self.name.append(item.name)
+                stadium.append(Stadium(name:item.name, lattitude: item.latitude, longtitude: item.longitude))
             }
-        }
-        fetchStadiumsOnMap(mapList)
+            self.fetchStadiumsOnMap(stadium)
+        })
+        print("name \(self.name)")
+        viewModel.MapfetchData()
+        
+//        fetchStadiumsOnMap(stadium)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("viewDIdAppear")
-        print("mapList \(mapList)")
-    }
-    func fetchStadiumsOnMap(_ stadiums: [markerLists]) {
+    func fetchStadiumsOnMap(_ stadiums: [Stadium]) {
         for stadium in stadiums {
             let annotations = MKPointAnnotation()
             annotations.title = stadium.name
             annotations.coordinate = CLLocationCoordinate2D(latitude:
-                                                                CLLocationDegrees(stadium.latitude), longitude: CLLocationDegrees(stadium.longitude))
+              stadium.lattitude, longitude: stadium.longtitude)
+            let mapCoordinates = MKCoordinateRegion(center: annotations.coordinate, latitudinalMeters: distanceSapn, longitudinalMeters: distanceSapn)
+            map.setRegion(mapCoordinates, animated: true)
             map.addAnnotation(annotations)
-        }
+            map.scalesLargeContentImage = true
+          }
     }
 }

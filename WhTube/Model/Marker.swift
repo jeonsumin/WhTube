@@ -7,8 +7,25 @@
 
 import Foundation
 
+struct markerResponse : Codable {
+    let Lists : [markerLists]
+    let markerListSize : Int
+    let centerLatitude : Double
+    let centerLongitude : Double
+    enum CodingKeys: String, CodingKey {
+        case Lists = "markerList"
+        case markerListSize,centerLatitude,centerLongitude
+    }
+}
+
 struct markerLists : Codable {
-    var name : String
-    var latitude: Int
-    var longitude : Int
+    let id : Int
+    let tag : String
+    let name : String
+    let latitude: Double
+    let longitude : Double
+    
+    enum CodingKeys: String, CodingKey {
+        case id, tag, name, latitude, longitude
+    }
 }

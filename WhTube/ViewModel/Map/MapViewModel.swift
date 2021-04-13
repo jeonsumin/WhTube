@@ -9,32 +9,27 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+typealias mapHandler = ([markerResponse]) -> Void
+
 class MapViewModel {
+    var changehandler : mapHandler
+    var map : [markerResponse] = [] {
+        didSet{
+            changehandler(map)
+        }
+    }
     
-    static let shared = MapViewModel()
-    
-    func mapListResponse(completion: @escaping (Result<[markerLists]> ) -> Void ){
-        
-        Alamofire.request(EndPoint.marker)
-            .validate(statusCode: 200..<401)
-            .responseJSON { (response) in
-                guard let responseValue = response.value else { return }
-                let resJson = JSON(responseValue)
-                var mapList = [markerLists]()
-                let Array = resJson
-                for (_,subJson): (String,JSON) in Array {
-                    let name = subJson["markerList"]["name"].string ?? ""
-                    let lat = subJson["markerList"]["latitude"].intValue
-                    let lon = subJson["markerList"]["longitude"].intValue
-                    let item = markerLists(name: name, latitude: lat, longitude: lon)
-                    mapList.append(item)
-                }
-                if mapList.count > 0 {
-                    completion(.success(mapList))
-                }else{
-                    completion(.failure(Error.self as! Error))
-                }
-            }
-        
+    init(changehandler: @escaping mapHandler) {
+        self.changehandler = changehandler
+    }
+    func MapfetchData(){
+        let mapAPI = NetworkManager.init(path: "api/cluster", method: .get)
+        mapAPI.request(success: {response in
+            let decoder = JSONDecoder()
+            let jsondata = try! decoder.decode([markerResponse].self, from: response!)
+            self.map = jsondata
+        }, fail: {error in
+            print("error \(String(describing: error))")
+        })
     }
 }
