@@ -8,11 +8,12 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+
 class MapViewModel {
     
     static let shared = MapViewModel()
     
-    func mapListResponse(completion: @escaping (Result<[markerLists],customError> ) -> Void ){
+    func mapListResponse(completion: @escaping (Result<[markerLists]> ) -> Void ){
         
         Alamofire.request(EndPoint.marker)
             .validate(statusCode: 200..<401)
@@ -20,21 +21,18 @@ class MapViewModel {
                 guard let responseValue = response.value else { return }
                 let resJson = JSON(responseValue)
                 var mapList = [markerLists]()
-                let Array = resJson["markerList"]
+                let Array = resJson
                 for (_,subJson): (String,JSON) in Array {
                     let name = subJson["markerList"]["name"].string ?? ""
-                    let lat = subJson["markerList"]["latitude"].string ?? ""
-                    let lon = subJson["markerList"]["longitude"].string ?? ""
-                    let id  = subJson["markerList"]["id"].intValue
-                    let markerListSize = subJson["markerListSize"].intValue
-                    let tag = subJson["markerList"]["tag"].string ?? ""
-                    let item = markerLists(id:id, tag: tag, name: name, latitude: lat, longitude: lon, markerListSize: markerListSize)
+                    let lat = subJson["markerList"]["latitude"].intValue
+                    let lon = subJson["markerList"]["longitude"].intValue
+                    let item = markerLists(name: name, latitude: lat, longitude: lon)
                     mapList.append(item)
                 }
                 if mapList.count > 0 {
                     completion(.success(mapList))
                 }else{
-                    completion(.failure(.failAPI))
+                    completion(.failure(Error.self as! Error))
                 }
             }
         

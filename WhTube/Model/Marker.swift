@@ -8,10 +8,7 @@
 import Foundation
 
 struct markerLists : Codable {
-    var id : Int
-    var tag : String
     var name : String
-    var latitude: String
-    var longitude : String
-    var markerListSize : Int
+    var latitude: Int
+    var longitude : Int
 }
