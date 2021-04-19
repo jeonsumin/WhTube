@@ -31,7 +31,6 @@ class MapViewController: UIViewController {
             let Array = mapPing.first!.Lists
             var stadium : [Stadium] = []
             for item in Array {
-//                self.name.append(item.name)
                 stadium.append(Stadium(name:item.name, lattitude: item.latitude, longtitude: item.longitude))
             }
             self.fetchStadiumsOnMap(stadium)
@@ -39,7 +38,6 @@ class MapViewController: UIViewController {
         print("name \(self.name)")
         viewModel.MapfetchData()
         
-//        fetchStadiumsOnMap(stadium)
     }
     func fetchStadiumsOnMap(_ stadiums: [Stadium]) {
         for stadium in stadiums {
